@@ -73,24 +73,97 @@ var visParams = {
 };
 ```
 
-Add the layee to the map based on the parameters set and give the image a name
+Add the layer to the map based on the parameters set and using the variable set for image(gfc2012)
 
 ```
 Map.addLayer(gfc2012, visParams, "Tree Canopy Cover");
 print(gfc2012)
 ```
 
+The code below sets parameters for measuring deforestation.  - "cc" sets the minimum canopy cover for the year 2000. We are considering forest that had 50% canopy cover in 2000. 
+ - "pixels" sets the minimum connected area for forest in 2000 (so a forest area must have at least 6 connected pixels)
+ - "losspixels" sets the minimum connected area for forest loss. We set the mininum pixels for the features to be considered. For Example- Here, setting this minimum number to 6 tells us that there is approximately 0.5 ha of area considered minimum. We also set the minimum mapping area for tree loss which is usually same as the minimum forest area.
 
+```
+var cc = ee.Number(50);
+var pixels = ee.Number(6);
+var lossPixels = ee.Number(6);
+```
 
+Now, the areas with below 50% Canopy Cover are masked as they are insignificant in our study. We also mask out the areas that do not have atleast 6 connected pixels as they dont fall under our criteria of minimum area of forest cover or minimum area for tree loss. 
 
+```
+var canopyCover = gfc2012.select(['treecover2000']);
+var canopyCover50 = canopyCover.gte(cc).selfMask();
+```
 
+```
+var contArea = canopyCover50.connectedPixelCount();
+var minArea = contArea.gte(pixels).selfMask();
+print('min area', minArea)
+```
 
+```
+Map.addLayer(minArea, {
+    palette: ['#96ED89']
+}, 'tree cover: >= min canopy cover & area (light green)');
+```
 
+## Examining deforested area by year
 
+- the "lossAreaImage" below shows the area of deforestation loss in square meters. This is because "ee.Image.pixelArea()" calculates area in sq meters.
+We want to convert the "lossAreaImage" to sqaure kilometers. For doing this we would have to divide the image by 10^6. To do this, we use the function '.multiply'
+```
+var validForestMask = minArea.mask()
+var lossImage = gfc2012.select(['loss']).mask(validForestMask);
 
+var lossAreaImage = lossImage.multiply(ee.Image.pixelArea())
+var lossAreaImage_sqkm = lossAreaImage.divide(1e-6)
+```
 
+## Calculate loss by year
+The code below calculates deforestation area by year. The "lossByYear" object gives us the deforested area by year in sqaure kilometers. When run, the "lossByYear" contains two different properties which can be seen in the console. One of this property is 'group' and the other is 'sum'
+Group represents the loss year of the deofrestation whereas 'sum' represents the total area of loss.
 
+```
+var lossYear = gfc2012.select(['lossyear']);
+var lossByYear = lossAreaImage_sqkm.addBands(lossYear).reduceRegion({
+  reducer: ee.Reducer.sum().group({
+    groupField: 1
+    }),
+  geometry: selected,
+  scale: 30,
+  maxPixels: 1e8,
+  bestEffort: true
+});
+print('loss by year', lossByYear);
+```
 
+## To represent the forest loss by year as charts
+```
+var statsFormatted = ee.List(lossByYear.get('groups'))
+  .map(function(el) {
+    var d = ee.Dictionary(el);
+    return [ee.Number(d.get('group')).format("20%02d"), d.get('sum')];
+  });
+var statsDictionary = ee.Dictionary(statsFormatted.flatten());
+print('statsDictionary', statsDictionary);
+
+var chart = ui.Chart.array.values({
+  array: statsDictionary.values(),
+  axis: 0,
+  xLabels: statsDictionary.keys()
+}).setChartType('ColumnChart')
+  .setOptions({
+    title: 'Yearly Forest Loss (sq km)',
+    hAxis: {title: 'Year', format: '####'},
+    vAxis: {title: 'Area (sq km)'},
+    legend: { position: "none" },
+    lineWidth: 1,
+    pointSize: 3
+  });
+print(chart);
+```
 
 
 
