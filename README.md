@@ -7,5 +7,76 @@ In this project, the extent of deforestation in Brazil Amazon Forest and the for
 This is carried out on Google Earth Engine using Javascript. 
 
 ## Data:
-The data used in this project is the Hansen et. al Global Forest Change 2000-2014 data
-It can be accessed through the web page [here](https://developers.google.com/earth-engine/tutorials/tutorial_forest_02)
+The data used in this project is the Hansen et. al Global Forest Change 2000-2014 data.
+
+It can be accessed through the [web page](https://developers.google.com/earth-engine/tutorials/tutorial_forest_02)
+
+IMAGE
+
+The Global forest change dataset 2013 contains the forest change globally between 2000-2014. This dataset can be accessed and imported through Earth Engine from the top bar for search places and locations.
+
+IMAGE
+
+or by running some lines of code.
+
+IMAGE
+
+The data contains information in various different bands including:
+
+IMAGE
+
+## Tutorial
+
+Start by creating a variable for the country of study as var country and using the 2 letter code for the country from [The list of FIPS Country Codes](https://en.wikipedia.org/wiki/List_of_FIPS_country_codes)
+
+```
+var country = 'BR';
+```
+
+
+Then, load the country features from Large Scale International Boundary dataset:
+
+IMAGE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
