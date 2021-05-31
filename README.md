@@ -36,7 +36,95 @@ var country = 'BR';
 
 Then, load the country features from Large Scale International Boundary dataset:
 
-IMAGE
+```
+var countries = ee.FeatureCollection('USDOS/LSIB_SIMPLE/2017');
+var selected = countries.filter(ee.Filter.eq('country_co', ee.String(country)));
+```
+
+Add the layer to the code by using:
+
+```
+Map.addLayer(selected, {}, "Brazil")
+```
+
+You can set the map center and zoom level of your choice. It is preferred to set the zoomm level such that it includes all of the study area and not a lot of surrounding area
+
+```
+Map.setCenter(-53.2, -10.6, 3);
+```
+
+use ee.Image() to add the Hansen forest cover 2000-2012 data set to the map. 
+
+```
+var gfc2012 = ee.Image('UMD/hansen/global_forest_change_2013'); 
+```
+
+Set the visual parameters which can include the band to represent, minimum and maximum extent, and the pallette used for the data
+
+```
+var visParams = {
+  bands: ['treecover2000'],
+  min: 0.0,
+  max: 100.0,
+  palette: [
+    "3d3d3d","080a02","080a02","080a02","106e12","37a930",
+    "03ff17",
+  ]
+};
+```
+
+Add the layee to the map based on the parameters set and give the image a name
+
+```
+Map.addLayer(gfc2012, visParams, "Tree Canopy Cover");
+print(gfc2012)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
