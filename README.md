@@ -165,7 +165,22 @@ var chart = ui.Chart.array.values({
 print(chart);
 ```
 
+## Forest Cover change for Bhutan
 
+To identify the forest cover change (deforestation/aforestation) we would carry out the same analysis except for the starting of the code where we set Bhutan as our country of study in the variable declaration, add the layer to the map after extracting the data through the data link, and set map center and zoom level. 
+
+```
+var country = 'BT';
+```
+
+```
+// add Map.addLayer code  
+Map.addLayer(selected, {}, "Bhutan")
+
+
+// add Map.setCenter code
+Map.setCenter(90.533226,27.483672, 7);
+```
 
 
 
