@@ -170,7 +170,7 @@ var chart = ui.Chart.array.values({
 print(chart);
 ```
   
-<img src = FPChart.png>  
+<img src = FPchart.png>  
 
 ## Forest Cover change for Bhutan
 
