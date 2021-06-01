@@ -189,7 +189,9 @@ Map.addLayer(selected, {}, "Bhutan")
 Map.setCenter(90.533226,27.483672, 7);
 ```
 
-
+<img src = FPBhutan.png>
+  
+<img src  = Bhutan.png>  
 
 
 
