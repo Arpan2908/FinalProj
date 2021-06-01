@@ -140,6 +140,9 @@ var lossByYear = lossAreaImage_sqkm.addBands(lossYear).reduceRegion({
 });
 print('loss by year', lossByYear);
 ```
+  
+<img src = BrazilFinal.png>  
+  
 
 ## To represent the forest loss by year as charts
 ```
@@ -166,6 +169,8 @@ var chart = ui.Chart.array.values({
   });
 print(chart);
 ```
+  
+<img src = FPChart.png>  
 
 ## Forest Cover change for Bhutan
 
