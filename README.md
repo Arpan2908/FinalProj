@@ -15,7 +15,7 @@ It can be accessed through the [web page](https://developers.google.com/earth-en
 
 The Global forest change dataset 2013 contains the forest change globally between 2000-2014. This dataset can be accessed and imported through Earth Engine from the top bar for search places and locations.
 
-IMAGE
+<img src = FP.png>
 
 or by running some lines of code.
 
