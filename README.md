@@ -196,7 +196,11 @@ Map.setCenter(90.533226,27.483672, 7);
 <img src = Bhutanchart.png>
 
 
-
+## Citations
+  
+* [Google Earth Engine Help](https://developers.google.com/earth-engine/help)  
+* [Deforestation](https://environmentalsystemsresearch.springeropen.com/articles/10.1186/s40068-020-0163-z)
+* [Bhutan forest cover change](https://link.springer.com/article/10.1007/s10113-014-0749-y)
 
 
 
