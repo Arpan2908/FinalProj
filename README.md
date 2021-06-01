@@ -19,11 +19,11 @@ The Global forest change dataset 2013 contains the forest change globally betwee
 
 or by running some lines of code.
 
-IMAGE
+<img src = FP3.png>
 
 The data contains information in various different bands including:
 
-IMAGE
+<ing src = FP4.png>
 
 ## Tutorial
 
@@ -53,6 +53,8 @@ You can set the map center and zoom level of your choice. It is preferred to set
 Map.setCenter(-53.2, -10.6, 3);
 ```
 
+<img src = FP0.png>  
+  
 use ee.Image() to add the Hansen forest cover 2000-2012 data set to the map. 
 
 ```
