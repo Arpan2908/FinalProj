@@ -1,4 +1,4 @@
-# Analyzing deforestation in Brazil and Bhutan for the years 2000-2012
+# Analyzing Forest Cover Change in Brazil and Bhutan for the years 2000-2012
 
 ## Introduction: 
 Forests are a critical component in climate regulation and isolating carbon emission. The Amazon forests in Brazil have been supporting the locals for energy, household needs and construction. These forests have been declining at an alarming rate due to deforestation and influenced by land use land cover change. On the other hand, there have been a lot of national policies aimed at forests protection in Bhutan. This was made successful by the Bhutanese forest protection policies by accounting for trade in wood products with India which have helped maintain a high forest cover. By mostly importing wood charcoal for its emerging chemical industries, Bhutan has managed to support the economic development while protecting the forests. 
