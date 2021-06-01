@@ -193,7 +193,7 @@ Map.setCenter(90.533226,27.483672, 7);
   
 <img src  = Bhutan.png>  
 
-
+<img src = Bhutanchart.png>
 
 
 
